@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:sprint2/paginas/tipoBusca.dart';
+import 'package:sprint2/paginas/login.dart';
 
 class AppMaterial extends StatelessWidget {
   const AppMaterial({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return  const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Eureka Finder",
-      home: tipoBusca(),
+      home: Login(),
     );
   }
 }

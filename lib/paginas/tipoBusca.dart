@@ -11,10 +11,10 @@ class tipoBusca extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBarM(),
       backgroundColor: const Color.fromRGBO(1, 41, 141, 1),
-      appBar: const AppBarM(),
       body: ListView(
-        padding: const EdgeInsets.all(0), // Removendo o padding padrão do ListView
+        padding: const EdgeInsets.all(0),
         children: [
           Center(
             child: Column(

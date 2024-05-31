@@ -78,535 +78,45 @@ class GridPainter extends CustomPainter {
 
   GridPainter(this.grid, this.path);
 
-  void drawBorderLine(Canvas canvas, Paint paint, double startX, double startY,
-      double endX, double endY) {
-    canvas.drawLine(
-      Offset(startX, startY),
-      Offset(endX, endY),
-      paint,
-    );
-  }
-
   @override
   void paint(Canvas canvas, Size size) {
     final cellWidth = size.width / 60;
     final cellHeight = size.height / 30;
 
-    final paint = Paint()
-      ..color = Colors.white
-      ..style = PaintingStyle.stroke;
-      
-    final borderPaint = Paint()
-      ..color = Colors.black
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2;
-
-    for (var i = 0; i <= 30; i++) {
-      final y = i * cellHeight;
-      canvas.drawLine(Offset(0, y), Offset(size.width, y), paint);
-    }
-
-    for (var i = 0; i <= 60; i++) {
-      final x = i * cellWidth;
-      canvas.drawLine(Offset(x, 0), Offset(x, size.height), paint);
-    }
-
     final obstaclePaint = Paint()..color = Colors.transparent;
-    final obstaclePaint2 = Paint()..color = Colors.blue;
+    final obstaclePaint2 = Paint()..color = Colors.transparent;
+
     for (var i = 0; i < 30; i++) {
       for (var j = 0; j < 60; j++) {
         if (grid[i][j] == -1) {
-              if ((j <= 52 && j >= 38 && i <= 19 && i >= 16) || (j <= 52 && j >= 50 && i <= 25 && i >= 22)) {
-                  canvas.drawRect(
-                      Rect.fromLTWH(
-                          j * cellWidth,
-                          i * cellHeight,
-                          cellWidth,
-                          cellHeight,
-                      ),
-                      obstaclePaint2,
-                  );
-              }
-              else {
-                  canvas.drawRect(
-                      Rect.fromLTWH(
-                          j * cellWidth,
-                          i * cellHeight,
-                          cellWidth,
-                          cellHeight,
-                      ),
-                      obstaclePaint,
-                  );
-              }
+          if ((j <= 52 && j >= 38 && i <= 19 && i >= 16) ||
+              (j <= 52 && j >= 50 && i <= 25 && i >= 22)) {
+            canvas.drawRect(
+              Rect.fromLTWH(
+                j * cellWidth,
+                i * cellHeight,
+                cellWidth,
+                cellHeight,
+              ),
+              obstaclePaint2,
+            );
+          } else {
+            canvas.drawRect(
+              Rect.fromLTWH(
+                j * cellWidth,
+                i * cellHeight,
+                cellWidth,
+                cellHeight,
+              ),
+              obstaclePaint,
+            );
           }
-
-        if (i == 29) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 25 && j >= 3 && j <= 17) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 19 && j >= 3 && j <= 17) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 13 && j >= 3 && j <= 17) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 7 && j >= 4 && j <= 16) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 1 && j >= 3 && j <= 17) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 25 && j >= 21 && j <= 35) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 19 && j >= 21 && j <= 35) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 13 && j >= 21 && j <= 35) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 7 && j >= 21 && j <= 35) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 1 && j >= 21 && j <= 35) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 25 && j >= 38 && j <= 52) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 19 && j >= 38 && j <= 52) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 13 && j >= 38 && j <= 52) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 7 && j >= 38 && j <= 52) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (i == 1 && j >= 38 && j <= 50) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth,
-              (i + 1) * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        //bordas superiores
-
-        if (i == 0) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 28 && 3 <= j && j <= 53) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 22 && 3 <= j && j <= 17) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 16 && 3 <= j && j <= 17) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 10 && 3 <= j && j <= 17) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 4 && 4 <= j && j <= 16) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 22 && 21 <= j && j <= 35) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 16 && 21 <= j && j <= 35) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 10 && 21 <= j && j <= 35) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 4 && 21 <= j && j <= 35) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 22 && 38 <= j && j <= 52) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 16 && 38 <= j && j <= 52) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 10 && 38 <= j && j <= 52) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 4 && 38 <= j && j <= 52) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-
-        if (i == 24 && 6 <= j && j <= 17) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 18 && 6 <= j && j <= 14) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 12 && 6 <= j && j <= 17) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 6 && 4 <= j && j <= 16) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 24 && 21 <= j && j <= 31) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 18 && 21 <= j && j <= 35) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 12 && 21 <= j && j <= 35) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 6 && 21 <= j && j <= 35) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 24 && 38 <= j && j <= 49) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 12 && 38 <= j && j <= 39) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-        if (i == 6 && 38 <= j && j <= 50) {
-          drawBorderLine(canvas, borderPaint, j * cellWidth, i * cellHeight,
-              (j + 1) * cellWidth, i * cellHeight);
-        }
-
-        //borda direita
-
-        if (j == 59) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 53 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 52 && i <= 25 && i >= 22) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 52 && i <= 19 && i >= 16) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 52 && i <= 13 && i >= 10) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 52 && i <= 7 && i >= 4) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 35 && i <= 1 && i >= 0) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 35 && i <= 25 && i >= 22) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 35 && i <= 19 && i >= 16) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 35 && i <= 13 && i >= 10) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 35 && i <= 7 && i >= 4) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 35 && i <= 1 && i >= 0) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 17 && i <= 1 && i >= 0) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 17 && i <= 25 && i >= 22) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 17 && i <= 19 && i >= 16) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 17 && i <= 13 && i >= 10) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 16 && i <= 7 && i >= 4) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 17 && i <= 1 && i >= 0) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 51 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 49 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 47 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 44 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 41 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 38 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 35 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 32 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 30 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 23 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 20 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 17 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 14 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 11 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 7 && i <= 29 && i >= 28) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 50 && i <= 1 && i >= 0) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 49 && i <= 25 && i >= 22) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 31 && i <= 25 && i >= 22) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 5 && i <= 25 && i >= 22) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 14 && i <= 19 && i >= 16) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 5 && i <= 19 && i >= 16) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 39 && i <= 13 && i >= 10) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 5 && i <= 13 && i >= 10) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 50 && i <= 7 && i >= 4) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if ((j == 46 ||
-                j == 43 ||
-                j == 40 ||
-                j == 29 ||
-                j == 26 ||
-                j == 23 ||
-                j == 15 ||
-                j == 12 ||
-                j == 9) &&
-            i <= 25 &&
-            i >= 22) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if ((j == 23 ||
-                j == 26 ||
-                j == 28 ||
-                j == 30 ||
-                j == 32 ||
-                j == 11 ||
-                j == 8) &&
-            i <= 19 &&
-            i >= 16) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if ((j == 32 ||
-                j == 29 ||
-                j == 23 ||
-                j == 27 ||
-                j == 14 ||
-                j == 11 ||
-                j == 8) &&
-            i <= 13 &&
-            i >= 10) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if (j == 25 && i <= 13 && i >= 12) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if ((j == 47 ||
-                j == 44 ||
-                j == 41 ||
-                j == 32 ||
-                j == 29 ||
-                j == 26 ||
-                j == 23 ||
-                j == 13 ||
-                j == 10 ||
-                j == 7) &&
-            i <= 7 &&
-            i >= 4) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-        if ((j == 47 ||
-                j == 44 ||
-                j == 41 ||
-                j == 32 ||
-                j == 29 ||
-                j == 26 ||
-                j == 23 ||
-                j == 14 ||
-                j == 11 ||
-                j == 8 ||
-                j == 5) &&
-            i <= 1 &&
-            i >= 0) {
-          drawBorderLine(canvas, borderPaint, (j + 1) * cellWidth,
-              i * cellHeight, (j + 1) * cellWidth, (i + 1) * cellHeight);
-        }
-
-        // borda esquerda
-        if (j == 0) {
-          canvas.drawLine(
-            Offset(j * cellWidth, i * cellHeight),
-            Offset(j * cellWidth, (i + 1) * cellHeight),
-            borderPaint,
-          );
-        }
-        if ((j == 3) &&
-            ((i <= 29 && i >= 28) ||
-                (i <= 25 && i >= 22) ||
-                (i <= 19 && i >= 16) ||
-                (i <= 13 && i >= 10) ||
-                (i <= 1 && i >= 0))) {
-          canvas.drawLine(
-            Offset(j * cellWidth, i * cellHeight),
-            Offset(j * cellWidth, (i + 1) * cellHeight),
-            borderPaint,
-          );
-        }
-        if ((j == 21) &&
-            ((i <= 25 && i >= 22) ||
-                (i <= 19 && i >= 16) ||
-                (i <= 13 && i >= 10) ||
-                (i <= 7 && i >= 4) ||
-                (i <= 1 && i >= 0))) {
-          canvas.drawLine(
-            Offset(j * cellWidth, i * cellHeight),
-            Offset(j * cellWidth, (i + 1) * cellHeight),
-            borderPaint,
-          );
-        }
-        if ((j == 38) &&
-            ((i <= 25 && i >= 22) ||
-                (i <= 19 && i >= 16) ||
-                (i <= 13 && i >= 10) ||
-                (i <= 7 && i >= 4) ||
-                (i <= 1 && i >= 0))) {
-          canvas.drawLine(
-            Offset(j * cellWidth, i * cellHeight),
-            Offset(j * cellWidth, (i + 1) * cellHeight),
-            borderPaint,
-          );
-        }
-        if (j == 4 && i <= 7 && i >=4) {
-          canvas.drawLine(
-            Offset(j * cellWidth, i * cellHeight),
-            Offset(j * cellWidth, (i + 1) * cellHeight),
-            borderPaint,
-          );
         }
       }
     }
 
     final pathPaint = Paint()..color = Colors.purple;
+
     for (var point in path) {
       canvas.drawRect(
         Rect.fromLTWH(
@@ -625,6 +135,7 @@ class GridPainter extends CustomPainter {
     return true;
   }
 }
+
 
 class Pontos {
   final int _x;
@@ -689,7 +200,7 @@ List<Pontos> rota(List<List<int>> grid, Pontos inicio, Pontos destino) {
     }
   }
 
-  return []; // Retorna uma lista vazia se não encontrar um caminho
+  return [];
 }
 
 List<Pontos> reconstruirRota(Map<Pontos, Pontos> cameFrom, Pontos current) {
