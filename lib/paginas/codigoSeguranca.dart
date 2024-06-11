@@ -103,12 +103,6 @@ class _CodigoSegurancaState extends State<CodigoSeguranca> {
                           });
                         }
                       }
-                      Future.delayed(const Duration(seconds: 10), () {
-                        setState(() {
-                          _codigoErrado = false;
-                          _codigoVazio = false;
-                        });
-                      });
                     },
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(75, 15, 75, 15),

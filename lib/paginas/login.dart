@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:sprint2/backend/contas.dart';
 import 'package:sprint2/paginas/cadastro.dart';
@@ -124,18 +127,15 @@ class _LoginState extends State<Login> {
                     _senhaErrada = false;
                     _emailErrado = false;
                     String email = _emailController.text;
-                    String senha = _passwordController.text;
+                    var bytes = utf8.encode(_passwordController.text);
+                    var digest = sha256.convert(bytes);
+                    String senha= digest.toString();
                     if (email != "") {
                       var data = await BuscarConta(email);
                       if (data != null && data.isNotEmpty) {
                         if (senha.isEmpty) {
                           setState(() {
                             _senhaVazia = true;
-                          });
-                          Future.delayed(const Duration(seconds: 10), () {
-                            setState(() {
-                              _senhaVazia = false;
-                            });
                           });
                           _passwordController.clear();
                         } else if (data[0]["senha"] != senha) {

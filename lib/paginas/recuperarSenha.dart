@@ -105,17 +105,20 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
                             var random = Random();
                             int numeroAleatorio =
                                 100000 + random.nextInt(900000);
-                            print(numeroAleatorio);
-                            Navigator.push(context,
-                            MaterialPageRoute(builder: (context) =>  CodigoSeguranca(email: email, codigo: numeroAleatorio)));
+                            await enviarEmail(
+                                assunto: "Recuperação de senha.",
+                                corpo: numeroAleatorio.toString(),
+                                email: "eurekafinderexemplo@gmail.com",
+                                senha: "bpxv ebqr iett xfls",
+                                remetente: email);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CodigoSeguranca(
+                                        email: email,
+                                        codigo: numeroAleatorio)));
                           }
                         }
-                        Future.delayed(const Duration(seconds: 10), () {
-                          setState(() {
-                            _emailErrado = false;
-                            _emailVazio = false;
-                          });
-                        });
                       },
                       child: const Padding(
                         padding: EdgeInsets.fromLTRB(75, 15, 75, 15),

@@ -454,12 +454,6 @@ class _CadastroState extends State<Cadastro> {
                         _cpfController.clear();
                       });
                     }
-                    Future.delayed(const Duration(seconds: 10), () {
-                      setState(() {
-                        _emailJaCadastrado = false;
-                        _cpfJaCadastrado = false;
-                      });
-                    });
                   },
                   child: const Padding(
                     padding: EdgeInsets.fromLTRB(80, 15, 80, 15),
